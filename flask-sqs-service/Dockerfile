@@ -13,6 +13,5 @@ RUN pip install -r requirements.txt
 #Expose container port
 EXPOSE 5002
 
-#Start flask app
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+#Start flask app with Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:5002", "app:app"]
